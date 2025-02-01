@@ -44,17 +44,17 @@ def trigon():
                 result = api_data.get('result') 
 
                 if result:
-                    return jsonify({"result": result}), 200
+                    return jsonify({"result": result , "owner" : "UwU"}), 200
                 else:
-                    return jsonify({"error": "Không tìm thấy trường 'result' trong phản hồi API."}), 400
+                    return jsonify({"error": "result error"}), 400
             else:
-                return jsonify({"error": "Không thể truy cập API hoặc nhận phản hồi hợp lệ."}), 400
+                return jsonify({"error": "Api down"}), 400
 
         else:
-            return jsonify({"error": "Không tìm thấy URL trong onclick."}), 400
+            return jsonify({"error": "url not found"}), 400
 
     except requests.exceptions.RequestException as e:
-        return jsonify({"error": f"Đã xảy ra lỗi khi tải trang: {str(e)}"}), 400
+        return jsonify({"error": f"{str(e)}"}), 400
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=port,debug=False) 
